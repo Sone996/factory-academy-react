@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { authService } from "../store/AuthModule/AuthService";
 
 const loginFormTemlate = {
   email: '',
@@ -22,8 +23,15 @@ const Login = () => {
     setRegister(!register);
   }
 
-  const loginSubmit = () => {
-    console.log('loginsubmit ', loginForm);
+  const loginSubmit = async () => {
+    authService.login(loginForm)
+      .then(res => {
+        console.log('usepo sam', res)
+      })
+      .catch(err => {
+        console.log(err)
+      }
+      );
   }
 
   const registerAction = () => {
@@ -160,7 +168,7 @@ const Login = () => {
           </div>
           <div className="flex flex-col mt-2">
             <div>
-              <input type="radio" name="student" value="student" onChange={roleHandler}/>
+              <input type="radio" name="student" value="student" onChange={roleHandler} />
               <label htmlFor="student">Student</label>
             </div>
             <div>
