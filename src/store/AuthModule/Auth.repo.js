@@ -12,7 +12,7 @@ class AuthRepo {
     }
 
     register(data) {
-        // return api.post(ROUTES.REGISTER, data);
+        return api.post(ROUTES.REGISTER, data);
     }
 
     fetchActiveAccount() {

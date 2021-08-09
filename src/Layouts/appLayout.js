@@ -51,7 +51,6 @@ const AppLayout = () => {
     }
 
     useEffect(() => {
-        console.log('promena')
         authService.fetchActiveAccount()
         .then(res => {
             setLoggedUser(res.data)

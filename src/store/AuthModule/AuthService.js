@@ -7,19 +7,26 @@ class AuthService {
         try {
             data.password = SHA512(data.password).toString();
             const res = await authRepo.login(data)
-            //this.setLoggedUser(res.data)
 			localStorage.setItem(TOKEN_LS_NAME, res.data['session-id']);
-            // console.log(res.data)
             return Promise.resolve(res);
         } catch (error) {
             return Promise.reject(error)
         }
-        
-        // return authRepo.login(data);
+    }
+
+    async loginAfterRegister(data) {
+        try {
+            const res = await authRepo.login(data)
+			localStorage.setItem(TOKEN_LS_NAME, res.data['session-id']);
+            return Promise.resolve(res);
+        } catch (error) {
+            return Promise.reject(error)
+        }
     }
 
     register(data) {
-        //return authRepo.register(data);
+        data.password = SHA512(data.password).toString();
+        return authRepo.register(data);
     }
 
     fetchActiveAccount() {
