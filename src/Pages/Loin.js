@@ -1,5 +1,8 @@
+import React, { useContext } from "react";
 import { useState } from "react";
 import { authService } from "../store/AuthModule/AuthService";
+import { useHistory } from "react-router-dom";
+import { AppContext } from '../AppContext';
 
 const loginFormTemlate = {
   email: '',
@@ -18,6 +21,8 @@ const Login = () => {
   const [loginForm, setLoginForm] = useState(loginFormTemlate);
   const [registerForm, setRegisterForm] = useState(registerFormTemplate);
   const [register, setRegister] = useState(false);
+  const history = useHistory();
+  const { loggedUser, setLoggedUser } = useContext(AppContext);
 
   const toggleForm = () => {
     setRegister(!register);
@@ -26,10 +31,15 @@ const Login = () => {
   const loginSubmit = async () => {
     authService.login(loginForm)
       .then(res => {
-        console.log('usepo sam', res)
+        setLoggedUser(res.data);
+        if (res.data.role === 'teacher') {
+          history.push('/teacher-home');
+        } else {
+          history.push('/student-home');
+        }
       })
       .catch(err => {
-        console.log(err)
+        console.log('err')
       }
       );
   }
@@ -88,105 +98,105 @@ const Login = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-full w-full">
-      {!register ?
-        //login form
-        <div className="flex flex-col w-4/12 border h-2/3 p-4">
-          <div className="flex justify-center">
-            <span className="text-3xl">Login</span>
-          </div>
-          <div className="flex flex-col justify-center mt-8">
-            <span>Email</span>
-            <input
-              className="input"
-              type="text"
-              value={loginForm.email}
-              onChange={loginEmailHandler}
-            />
-          </div>
-          <div className="flex flex-col justify-center mt-4">
-            <span>Password</span>
-            <input
-              className="input"
-              type="password"
-              value={loginForm.password}
-              onChange={loginPasswordHandler}
-            />
-          </div>
-          <div className="flex mt-4 justify-between">
-            <div className="button bg-blue-500 w-1/3" onClick={loginSubmit}>Login</div>
-            <div className="button bg-darkGreen w-1/3" onClick={toggleForm}>
-              Register
+      <div className="flex items-center justify-center h-full w-full">
+        {!register ?
+          //login form
+          <div className="flex flex-col w-4/12 border h-2/3 p-4">
+            <div className="flex justify-center">
+              <span className="text-3xl">Login</span>
+            </div>
+            <div className="flex flex-col justify-center mt-8">
+              <span>Email</span>
+              <input
+                className="input"
+                type="text"
+                value={loginForm.email}
+                onChange={loginEmailHandler}
+              />
+            </div>
+            <div className="flex flex-col justify-center mt-4">
+              <span>Password</span>
+              <input
+                className="input"
+                type="password"
+                value={loginForm.password}
+                onChange={loginPasswordHandler}
+              />
+            </div>
+            <div className="flex mt-4 justify-between">
+              <div className="button bg-blue-500 w-1/3" onClick={loginSubmit}>Login</div>
+              <div className="button bg-darkGreen w-1/3" onClick={toggleForm}>
+                Register
+              </div>
             </div>
           </div>
-        </div>
-        :
-        //register form
-        <div className="flex flex-col w-4/12 border h-2/3 p-4">
-          <div className="flex justify-center">
-            <span className="text-3xl">Register</span>
-          </div>
-          <div className="flex flex-col justify-center mt-8">
-            <span>First Name</span>
-            <input
-              className="input"
-              type="text"
-              autoComplete="off"
-              value={registerForm.name}
-              onChange={registerNameHandler}
-            />
-          </div>
-          <div className="flex flex-col justify-center mt-8">
-            <span>Last Name</span>
-            <input
-              className="input"
-              type="text"
-              autoComplete="off"
-              value={registerForm.surname}
-              onChange={registerSurnameHandler}
-            />
-          </div>
-          <div className="flex flex-col justify-center mt-8">
-            <span>Email</span>
-            <input
-              className="input"
-              type="text"
-              autoComplete="off"
-              value={registerForm.email}
-              onChange={registerEmailHandler}
-            />
-          </div>
-          <div className="flex flex-col justify-center mt-8">
-            <span>Password</span>
-            <input
-              className="input"
-              type="password"
-              autoComplete="new-password"
-              value={registerForm.password}
-              onChange={registerPasswordHandler}
-            />
-          </div>
-          <div className="flex flex-col mt-2">
-            <div>
-              <input type="radio" name="student" value="student" onChange={roleHandler} />
-              <label htmlFor="student">Student</label>
+          :
+          //register form
+          <div className="flex flex-col w-4/12 border h-2/3 p-4">
+            <div className="flex justify-center">
+              <span className="text-3xl">Register</span>
             </div>
-            <div>
-              <input type="radio" name="teacher" value="teacher" onChange={roleHandler} />
-              <label htmlFor="teacher">Teacher</label>
+            <div className="flex flex-col justify-center mt-8">
+              <span>First Name</span>
+              <input
+                className="input"
+                type="text"
+                autoComplete="off"
+                value={registerForm.name}
+                onChange={registerNameHandler}
+              />
+            </div>
+            <div className="flex flex-col justify-center mt-8">
+              <span>Last Name</span>
+              <input
+                className="input"
+                type="text"
+                autoComplete="off"
+                value={registerForm.surname}
+                onChange={registerSurnameHandler}
+              />
+            </div>
+            <div className="flex flex-col justify-center mt-8">
+              <span>Email</span>
+              <input
+                className="input"
+                type="text"
+                autoComplete="off"
+                value={registerForm.email}
+                onChange={registerEmailHandler}
+              />
+            </div>
+            <div className="flex flex-col justify-center mt-8">
+              <span>Password</span>
+              <input
+                className="input"
+                type="password"
+                autoComplete="new-password"
+                value={registerForm.password}
+                onChange={registerPasswordHandler}
+              />
+            </div>
+            <div className="flex flex-col mt-2">
+              <div>
+                <input type="radio" name="student" value="student" onChange={roleHandler} />
+                <label htmlFor="student">Student</label>
+              </div>
+              <div>
+                <input type="radio" name="teacher" value="teacher" onChange={roleHandler} />
+                <label htmlFor="teacher">Teacher</label>
+              </div>
+            </div>
+            <div className="flex mt-4 justify-between">
+              <div className="button bg-darkRed w-1/3" onClick={toggleForm}>
+                Go Back
+              </div>
+              <div className="button bg-darkGreen w-1/3" onClick={registerAction}>
+                Register
+              </div>
             </div>
           </div>
-          <div className="flex mt-4 justify-between">
-            <div className="button bg-darkRed w-1/3" onClick={toggleForm}>
-              Go Back
-            </div>
-            <div className="button bg-darkGreen w-1/3" onClick={registerAction}>
-              Register
-            </div>
-          </div>
-        </div>
-      }
-    </div>
+        }
+      </div>
   );
 }
 

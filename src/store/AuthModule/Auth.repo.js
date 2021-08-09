@@ -16,10 +16,10 @@ class AuthRepo {
     }
 
     fetchActiveAccount() {
-        // return api.get(ROUTES.FETCH_ACCOUNT);
+        return api.get(ROUTES.FETCH_ACCOUNT);
     }
     logout() {
-        // return api.post(ROUTES.LOGOUT);
+        return api.post(ROUTES.LOGOUT);
     }
 }
 

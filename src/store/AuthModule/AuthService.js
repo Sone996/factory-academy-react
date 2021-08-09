@@ -9,7 +9,7 @@ class AuthService {
             const res = await authRepo.login(data)
             //this.setLoggedUser(res.data)
 			localStorage.setItem(TOKEN_LS_NAME, res.data['session-id']);
-            console.log(res)
+            // console.log(res.data)
             return Promise.resolve(res);
         } catch (error) {
             return Promise.reject(error)
@@ -23,10 +23,10 @@ class AuthService {
     }
 
     fetchActiveAccount() {
-        //return authRepo.fetchActiveAccount();
+        return authRepo.fetchActiveAccount();
     }
     logout() {
-        //return authRepo.logout();
+        return authRepo.logout();
     }
 }
 

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Route, useHistory, Switch } from "react-router-dom";
 import TeacherHome from "../Views/Teacher/TeacherHome";
 import StudentHome from "../Views/Student/StudentHome";
+import { AppContext } from '../AppContext';
+import { authService } from "../store/AuthModule/AuthService";
+import { TOKEN_LS_NAME } from '../constants/constants';
 
 const AppLayout = () => {
 
-    const loggedUser = { role: 'professor' };
-
+    const { loggedUser, setLoggedUser } = useContext(AppContext); 
     const history = useHistory();
 
     const goHome = () => {
@@ -38,8 +40,26 @@ const AppLayout = () => {
     }
 
     const logout = () => {
-        history.push('/login');
+        authService.logout()
+        .then((res) => {
+            localStorage.removeItem(TOKEN_LS_NAME);
+            history.push('/login');
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
+
+    useEffect(() => {
+        console.log('promena')
+        authService.fetchActiveAccount()
+        .then(res => {
+            setLoggedUser(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },[])
 
     return (
         <div className="flex w-full h-full">
