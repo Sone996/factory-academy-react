@@ -1,5 +1,5 @@
 import './App.scss';
-import Login from './Pages/Loin';
+import Login from './Pages/Login';
 import AppLayout from './Layouts/appLayout';
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
