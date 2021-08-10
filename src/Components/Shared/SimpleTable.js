@@ -47,7 +47,7 @@ const SimpleTable = ({ titles, model, singleView }) => {
                       className={index % 2 === 0 ? 'bg-gray-100 hover:bg-darkGreen' : 'bg-gray-300 hover:bg-darkGreen'}>
                       {
                         column.map((col, index) => (
-                          <td key={index} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item[column[index]]}</td>
+                          <td key={index} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">{ typeof(item[column[index]]) === 'boolean' ? item[column[index]].toString() : item[column[index]]}</td>
                         ))
                       }
                     </tr>

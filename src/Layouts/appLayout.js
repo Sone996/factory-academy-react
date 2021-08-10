@@ -12,6 +12,7 @@ import MemberList from "../Views/Teacher/MemberList";
 import NewCourse from "../Views/Teacher/NewCourse";
 import CourseList from "../Views/Shared/CourseList";
 import SingleCourse from "../Views/Shared/SingleCourse";
+import StudentAplications from "../Views/Teacher/StudentAplications";
 
 const AppLayout = () => {
 
@@ -50,7 +51,7 @@ const AppLayout = () => {
         history.push('/course-list');
     }
 
-    const studentAplications = () => {
+    const studentAplicationsHandler = () => {
         history.push('/student-aplications');
     }
 
@@ -94,7 +95,7 @@ const AppLayout = () => {
                                 <span className="my-2 cursor-pointer" onClick={myStudents}>My Students</span>
                                 <span className="my-2 cursor-pointer" onClick={newCourseHandler} > New Course</span >
                                 <span className="my-2 cursor-pointer" onClick={CourseListHandler} > Course List</span >
-                                <span className="my-2 cursor-pointer" onClick={studentAplications} > Student aplications</span >
+                                <span className="my-2 cursor-pointer" onClick={studentAplicationsHandler} > Student aplications</span >
                             </>
                             :
                             <></>
@@ -113,6 +114,7 @@ const AppLayout = () => {
                     <Route path="/new-course" component={NewCourse} />
                     <Route path="/course-list" component={CourseList} />
                     <Route path="/single-course/:id" component={SingleCourse} />
+                    <Route path="/student-aplications" component={StudentAplications} />
                 </Switch>
             </div>
         </div >
