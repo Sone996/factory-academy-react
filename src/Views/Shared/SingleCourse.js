@@ -2,6 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../../AppContext';
 import { useHistory } from 'react-router-dom';
 import { courseService } from '../../store/CourseModule/course.service';
+// components
+import SingleCourseComponent from '../../Components/Teacher/SingleCourseComponent';
+import SingleCourseStudentComponent from '../../Components/Student/SingleCourseStudentComponent';
 
 const courseInterface = {
     name: '',
@@ -13,13 +16,26 @@ const SingleCourse = () => {
 
     const { loggedUser, setLoggedUser } = useContext(AppContext);
     const [course, setCourse] = useState(courseInterface);
-    const [studentsOnCOurse, setStudentsOnCourse] = useState([]);
+    const [studentsOnCourseList, setStudentsOnCourse] = useState([]);
     const history = useHistory();
+
+    const parseStudentsOnCourse = (studentsOnCourseList) => {
+
+        studentsOnCourseList.forEach((student, i) => {
+            studentsOnCourseList[i] = {
+                id: studentsOnCourseList[i].user_id,
+                user: studentsOnCourseList[i].user,
+                course_start_date: studentsOnCourseList[i].course_start_date,
+                complete: studentsOnCourseList[i].complete
+            }
+        })
+        setStudentsOnCourse(studentsOnCourseList);
+    }
 
     const studentsOnCourse = (id) => {
         courseService.studentsOnCourse({ course_id: id })
             .then(res => {
-                setStudentsOnCourse(res.data);
+                parseStudentsOnCourse(res.data)
             })
             .catch()
     }
@@ -53,11 +69,11 @@ const SingleCourse = () => {
             {
                 loggedUser.role === 'teacher' ?
                     <div className="flex flex-col items-center w-2/3">
-                        {/* <My-students-list :tableData='usersOnCourseList'></My-students-list> */}
+                        <SingleCourseComponent tableData={studentsOnCourseList}></SingleCourseComponent>
                     </div>
                     :
                     <div className="flex flex-col items-center w-full">
-                        {/* <Student-part :data="course"></Student-part> */}
+                        <SingleCourseStudentComponent data={course}></SingleCourseStudentComponent>
                     </div>
             }
         </div>
