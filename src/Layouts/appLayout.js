@@ -10,6 +10,7 @@ import StudentHome from "../Views/Student/StudentHome";
 import Profile from "../Views/Shared/Profile";
 import MemberList from "../Views/Teacher/MemberList";
 import NewCourse from "../Views/Teacher/NewCourse";
+import CourseList from "../Views/Shared/CourseList";
 
 const AppLayout = () => {
 
@@ -40,16 +41,16 @@ const AppLayout = () => {
         history.push('/member-list');
     }
 
-    const newCourse = () => {
+    const newCourseHandler = () => {
         history.push('/new-course');
     }
 
-    const CourseList = () => {
-        history.push('course-list');
+    const CourseListHandler = () => {
+        history.push('/course-list');
     }
 
     const studentAplications = () => {
-        history.push('student-aplications');
+        history.push('/student-aplications');
     }
 
     const logout = () => {
@@ -64,6 +65,9 @@ const AppLayout = () => {
     }
 
     useEffect(() => {
+        if(localStorage.length === 0) {
+            history.push('/login'); 
+        } else {
         authService.fetchActiveAccount()
             .then(res => {
                 setLoggedUser(res.data)
@@ -71,6 +75,7 @@ const AppLayout = () => {
             .catch(err => {
                 console.log(err)
             })
+        }
     }, [])
 
     return (
@@ -86,8 +91,8 @@ const AppLayout = () => {
                         loggedUser.role === 'teacher' ?
                             <>
                                 <span className="my-2 cursor-pointer" onClick={myStudents}>My Students</span>
-                                <span className="my-2 cursor-pointer" onClick={newCourse} > New Course</span >
-                                <span className="my-2 cursor-pointer" onClick={CourseList} > Course List</span >
+                                <span className="my-2 cursor-pointer" onClick={newCourseHandler} > New Course</span >
+                                <span className="my-2 cursor-pointer" onClick={CourseListHandler} > Course List</span >
                                 <span className="my-2 cursor-pointer" onClick={studentAplications} > Student aplications</span >
                             </>
                             :
@@ -105,6 +110,7 @@ const AppLayout = () => {
                     }} />
                     <Route path="/member-list" component={MemberList} />
                     <Route path="/new-course" component={NewCourse} />
+                    <Route path="/course-list" component={CourseList} />
                 </Switch>
             </div>
         </div >

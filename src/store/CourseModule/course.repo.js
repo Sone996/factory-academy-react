@@ -29,9 +29,9 @@ class CourseRepo {
     //     return api.get(URL);
     // }
 
-    // fetchAllCourses() {
-    //     return api.get(ROUTES.COURSES);
-    // }
+    fetchAllCourses() {
+        return api.get(ROUTES.COURSES);
+    }
 
     // // fetchMyCourses(id) {
     // //     const URL = `${ROUTES.TEACHER}/${id}${ROUTES.COURSES}`;

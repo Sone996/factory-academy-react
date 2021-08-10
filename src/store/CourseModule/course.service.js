@@ -21,9 +21,9 @@ class CourseService {
     //     return courseRepo.fetchSingleCours(data);
     // }
 
-    // fetchAllCourses() {
-    //     return courseRepo.fetchAllCourses();
-    // }
+    fetchAllCourses() {
+        return courseRepo.fetchAllCourses();
+    }
 
     // // fetchMyCourses(id) {
     // //     return adminRepo.fetchMyCourses(id);
