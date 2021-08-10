@@ -31,9 +31,9 @@ class PersonRepo {
         return api.get(URL);
     }
 
-    // fetchMyStudents() {
-    //     return api.get(ROUTES.STUDENTS);
-    // }
+    fetchMyStudents() {
+        return api.get(ROUTES.STUDENTS);
+    }
 
     // fetchAplicationRequests() {
     //     const URL = `${ROUTES.TEACHER}${ROUTES.REQUEST_COURSE}`;

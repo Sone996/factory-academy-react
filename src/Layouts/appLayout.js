@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Route, useHistory, Switch } from "react-router-dom";
-import TeacherHome from "../Views/Teacher/TeacherHome";
-import StudentHome from "../Views/Student/StudentHome";
-import Profile from "../Views/Shared/Profile";
 import { AppContext } from '../AppContext';
 import { authService } from "../store/AuthModule/AuthService";
 import { TOKEN_LS_NAME } from '../constants/constants';
 import { personService } from "../store/PersonModule/person.service";
+// pages
+import TeacherHome from "../Views/Teacher/TeacherHome";
+import StudentHome from "../Views/Student/StudentHome";
+import Profile from "../Views/Shared/Profile";
+import MemberList from "../Views/Teacher/MemberList";
 
 const AppLayout = () => {
 
@@ -26,9 +28,7 @@ const AppLayout = () => {
         personService.goProfile(loggedUser.id)
             .then(res => {
                 setProfileData(res.data);
-                history.push({
-                    pathname: `/profile/${res.data.id}`,
-                });
+                history.push({ pathname: `/profile/${res.data.id}` });
             })
             .catch(err => {
                 console.log(err)
@@ -99,10 +99,10 @@ const AppLayout = () => {
                 <Switch>
                     <Route path="/teacher-home" component={TeacherHome} />
                     <Route path="/student-home" component={StudentHome} />
-                    {/* <Route path="/profile/:id" component={Profile} /> */}
                     <Route path="/profile/:id" render={(props) => {
                         return (<Profile {...profileData} />)
                     }} />
+                    <Route path="/member-list" component={MemberList} />
                 </Switch>
             </div>
         </div >

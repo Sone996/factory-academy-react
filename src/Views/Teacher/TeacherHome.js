@@ -19,7 +19,6 @@ const TeacherHome = () => {
   const fetchMyCourses = async () => {
     personService.fetchMyCourses(loggedUser.id)
       .then(res => {
-        //console.log(res.data)
         if (res.data.length > 0) {
           let myCourses = res.data;
           myCourses.forEach((course, i) => {
