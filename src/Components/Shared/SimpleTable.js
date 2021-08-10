@@ -17,13 +17,11 @@ const SimpleTable = ({ titles, model, singleView }) => {
     setColumn(colName)
   }
 
-  // const singleView = (item) => {
-  //   console.log(item)
-  // }
-
   useEffect(() => {
-    modelCol();
-  }, [])
+    if(model.length > 0) {
+      modelCol();
+    }
+  }, [model])
 
   return (
     <div className="flex flex-col">
