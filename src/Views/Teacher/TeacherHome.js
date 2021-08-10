@@ -3,17 +3,17 @@ import { AppContext } from '../../AppContext';
 import SimpleTable from "../../Components/Shared/SimpleTable";
 import { personService } from "../../store/PersonModule/person.service";
 import Scroll from "../../Components/Shared/Scroll";
+import { useHistory } from 'react-router';
 
 const TeacherHome = () => {
 
   const { loggedUser, setLoggedUser } = useContext(AppContext);
   const titles = ['Id', 'Name', 'Average Mark', 'Price'];
   const [model, setModel] = useState([]);
+  const history = useHistory();
 
   const singleView = (item) => {
-    console.log(item)
-    // not finished
-    // this.$router.push({ path: '/course', query: { id: item.id } })
+    history.push({ pathname: `/single-course/${item.id}` });
   }
 
   const fetchMyCourses = async () => {

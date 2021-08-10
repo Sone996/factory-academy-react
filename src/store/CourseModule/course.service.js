@@ -2,9 +2,9 @@ import { courseRepo } from "./course.repo";
 import omit from "lodash/omit";
 
 class CourseService {
-    // studentsOnCourse(data) {
-    //     return courseRepo.studentsOnCourse(data);
-    // }
+    studentsOnCourse(data) {
+        return courseRepo.studentsOnCourse(data);
+    }
 
     // buyCourse(data) {
     //     return courseRepo.buyCourse({
@@ -17,9 +17,9 @@ class CourseService {
         return courseRepo.createCourse(data);
     }
     
-    // fetchSingleCours(data) {
-    //     return courseRepo.fetchSingleCours(data);
-    // }
+    fetchSingleCours(data) {
+        return courseRepo.fetchSingleCours(data);
+    }
 
     fetchAllCourses() {
         return courseRepo.fetchAllCourses();

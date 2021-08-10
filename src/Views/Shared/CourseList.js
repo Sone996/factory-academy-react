@@ -1,16 +1,18 @@
-import { rmSync } from 'fs';
 import React, {useState, useEffect} from 'react';
 import Scroll from '../../Components/Shared/Scroll';
 import SimpleTable from '../../Components/Shared/SimpleTable';
 import { courseService } from '../../store/CourseModule/course.service';
+import { useHistory } from 'react-router';
 
 const CourseList = () => {
 
     const titles = ['Id', 'Name', 'Average Mark', 'Price'];
     const [model, setModel] = useState([]);
+    const history = useHistory();
 
-    const singleView = () => {
-        console.log('single view')
+    const singleView = (item) => {
+        history.push({ pathname: `/single-course/${item.id}` });
+
     }
 
     const parseAllCourses = (data) => {

@@ -11,6 +11,7 @@ import Profile from "../Views/Shared/Profile";
 import MemberList from "../Views/Teacher/MemberList";
 import NewCourse from "../Views/Teacher/NewCourse";
 import CourseList from "../Views/Shared/CourseList";
+import SingleCourse from "../Views/Shared/SingleCourse";
 
 const AppLayout = () => {
 
@@ -111,6 +112,7 @@ const AppLayout = () => {
                     <Route path="/member-list" component={MemberList} />
                     <Route path="/new-course" component={NewCourse} />
                     <Route path="/course-list" component={CourseList} />
+                    <Route path="/single-course/:id" component={SingleCourse} />
                 </Switch>
             </div>
         </div >

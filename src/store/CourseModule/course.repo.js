@@ -1,5 +1,5 @@
 import { api } from '../../api/api';
-// import queryString from 'query-string';
+import queryString from 'query-string';
 const ROUTES = {
     STUDENTS: '/students',
     STUDENT: '/student',
@@ -10,10 +10,10 @@ const ROUTES = {
 };
 
 class CourseRepo {
-    // studentsOnCourse(data) {
-    //     const query = queryString.stringify(data)
-    //     return api.get(`${ROUTES.STUDENTS}?${query}`)
-    // }
+    studentsOnCourse(data) {
+        const query = queryString.stringify(data)
+        return api.get(`${ROUTES.STUDENTS}?${query}`)
+    }
 
     // buyCourse(data) {
     //     const URL = `${ROUTES.STUDENT}${ROUTES.REQUEST_COURSE}/${data.id}`;
@@ -24,10 +24,10 @@ class CourseRepo {
         return api.post(ROUTES.COURSES, data);
     }
 
-    // fetchSingleCours(data) {
-    //     const URL = `${ROUTES.COURSES}/${data}`;
-    //     return api.get(URL);
-    // }
+    fetchSingleCours(data) {
+        const URL = `${ROUTES.COURSES}/${data}`;
+        return api.get(URL);
+    }
 
     fetchAllCourses() {
         return api.get(ROUTES.COURSES);
