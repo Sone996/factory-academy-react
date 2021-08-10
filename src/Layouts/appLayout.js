@@ -9,6 +9,7 @@ import TeacherHome from "../Views/Teacher/TeacherHome";
 import StudentHome from "../Views/Student/StudentHome";
 import Profile from "../Views/Shared/Profile";
 import MemberList from "../Views/Teacher/MemberList";
+import NewCourse from "../Views/Teacher/NewCourse";
 
 const AppLayout = () => {
 
@@ -103,6 +104,7 @@ const AppLayout = () => {
                         return (<Profile {...profileData} />)
                     }} />
                     <Route path="/member-list" component={MemberList} />
+                    <Route path="/new-course" component={NewCourse} />
                 </Switch>
             </div>
         </div >

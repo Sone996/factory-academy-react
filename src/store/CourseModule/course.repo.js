@@ -20,9 +20,9 @@ class CourseRepo {
     //     return api.post(URL, data.data);
     // }
 
-    // createCourse(data) {
-    //     return api.post(ROUTES.COURSES, data);
-    // }
+    createCourse(data) {
+        return api.post(ROUTES.COURSES, data);
+    }
 
     // fetchSingleCours(data) {
     //     const URL = `${ROUTES.COURSES}/${data}`;

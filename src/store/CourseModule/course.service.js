@@ -13,9 +13,9 @@ class CourseService {
     //     });
     // }
 
-    // createCourse(data) {
-    //     return courseRepo.createCourse(data);
-    // }
+    createCourse(data) {
+        return courseRepo.createCourse(data);
+    }
     
     // fetchSingleCours(data) {
     //     return courseRepo.fetchSingleCours(data);
