@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.modal-overlay{
+	z-index: 2;
+    background-color: rgba(0, 0, 0, .6);
+}
+.modal{
+  z-index: 3;
+}
+.course-course-modal {
+  height: 10%;
+}

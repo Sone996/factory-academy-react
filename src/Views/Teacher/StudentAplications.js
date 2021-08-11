@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import Scroll from '../../Components/Shared/Scroll';
 import SimpleTable from '../../Components/Shared/SimpleTable';
 import { personService } from '../../store/PersonModule/person.service';
+import { AppContext } from '../../AppContext';
 
 const StudentAplications = () => {
+
+    const { modal, setModal } = useContext(AppContext);
 
     const [model, setModel] = useState([]);
     const [aplications, setAplications] = useState([]);
@@ -45,6 +48,12 @@ const StudentAplications = () => {
     }
     const singleView = (item) => {
         if(item.accepted === true) {
+            setModal({
+                ...modal,
+                status: true,
+                modalName: 'finishing-course-modal',
+                data: item
+            })
             //globalModule.setOverlay(true);
             //this.openModal('finishing-course-modal', item);
         } else {

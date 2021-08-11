@@ -90,7 +90,7 @@ const AppLayout = () => {
                     <span className="my-2 cursor-pointer" onClick={goHome}>Home</span>
                     <span className="my-2 cursor-pointer" onClick={goProfile}>Profile</span>
                     {
-                        loggedUser.role === 'teacher' ?
+                        loggedUser && loggedUser.role === 'teacher' ?
                             <>
                                 <span className="my-2 cursor-pointer" onClick={myStudents}>My Students</span>
                                 <span className="my-2 cursor-pointer" onClick={newCourseHandler} > New Course</span >
