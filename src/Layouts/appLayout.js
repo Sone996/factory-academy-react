@@ -36,7 +36,7 @@ const AppLayout = () => {
                 history.push({ pathname: `/profile/${res.data.id}` });
             })
             .catch(err => {
-                console.log(err.response.data.errors)
+                console.log(err.response.data.errors);
             });
     }
 

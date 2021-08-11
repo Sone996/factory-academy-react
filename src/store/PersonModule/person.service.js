@@ -10,9 +10,9 @@ class PersonService {
         return personRepo.goProfile(id);
     }
 
-    // fetchNotCompletedCourses() {
-    //     return personRepo.fetchNotCompletedCourses();
-    // }
+    fetchNotCompletedCourses() {
+        return personRepo.fetchNotCompletedCourses();
+    }
 
     // fetchCompletedCourses(id) {
     //     return personRepo.fetchCompletedCourses(id);
