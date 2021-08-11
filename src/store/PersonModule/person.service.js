@@ -26,12 +26,12 @@ class PersonService {
         return personRepo.fetchAplicationRequests();
     }
 
-    // resolveRequest(data) {
-    //     return personRepo.resolveRequest({
-    //         courseId: data.course_id,
-    //         data: omit(data, ['course_id']) 
-    //     });
-    // }
+    resolveRequest(data) {
+        return personRepo.resolveRequest({
+            courseId: data.course_id,
+            data: omit(data, ['course_id']) 
+        });
+    }
 
     // fetchNotRatedCourses(data) {
     //     return personRepo.fetchNotRatedCourses(data);

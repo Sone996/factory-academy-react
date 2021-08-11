@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AppContext } from './AppContext';
 // modals
 import FinishingCourseModal from './Components/Modals/FinishingCourseModal';
+import RequestAcceptModal from './Components/Modals/RequestAcceptModal';
 
 function App() {
 
@@ -20,7 +21,8 @@ function App() {
     switch (prop) {
       case 'finishing-course-modal':
         return <FinishingCourseModal />;
-
+      case 'requrest-accept-modal':
+        return <RequestAcceptModal />;
       default:
         break;
     }

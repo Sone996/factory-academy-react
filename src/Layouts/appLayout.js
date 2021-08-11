@@ -35,7 +35,7 @@ const AppLayout = () => {
                 history.push({ pathname: `/profile/${res.data.id}` });
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.response.data.errors)
             });
     }
 
@@ -62,7 +62,7 @@ const AppLayout = () => {
                 history.push('/login');
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.response.data.errors)
             })
     }
 
@@ -75,7 +75,7 @@ const AppLayout = () => {
                 setLoggedUser(res.data)
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.response.data.errors)
             })
         }
     }, [])

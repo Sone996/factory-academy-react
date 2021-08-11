@@ -30,7 +30,7 @@ const SingleCourseStudentComponent = ({ data }) => {
             setForm(formInterface)
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.response.data.errors)
         })
 
     }

@@ -54,11 +54,13 @@ const StudentAplications = () => {
                 modalName: 'finishing-course-modal',
                 data: item
             })
-            //globalModule.setOverlay(true);
-            //this.openModal('finishing-course-modal', item);
         } else {
-            //globalModule.setOverlay(true);
-            //this.openModal('requrest-accept-modal', item);
+            setModal({
+                ...modal,
+                status: true,
+                modalName: 'requrest-accept-modal',
+                data: item
+            })
         }
     }
 

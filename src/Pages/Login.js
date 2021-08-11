@@ -39,7 +39,7 @@ const Login = () => {
         }
       })
       .catch(err => {
-        console.log(err)
+        console.log(err.response.data.errors)
       }
       );
   }
@@ -55,7 +55,7 @@ const Login = () => {
         }
       })
       .catch(err => {
-        console.log(err)
+        console.log(err.response.data.errors)
       }
       );
   }
@@ -68,7 +68,7 @@ const Login = () => {
         loginPostRegister();
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response.data.errors);
       })
   };
 

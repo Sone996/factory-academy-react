@@ -40,10 +40,10 @@ class PersonRepo {
         return api.get(URL);
     }
 
-    // resolveRequest(data) {
-    //     const URL = `${ROUTES.TEACHER}${ROUTES.REQUEST_COURSE}/${data.courseId}`;
-    //     return api.post(URL, data.data);
-    // }
+    resolveRequest(data) {
+        const URL = `${ROUTES.TEACHER}${ROUTES.REQUEST_COURSE}/${data.courseId}`;
+        return api.post(URL, data.data);
+    }
 
     // fetchNotRatedCourses(data) {
     //     const URL = `${ROUTES.STUDENT}/${data}${ROUTES.RATE_COURSE}`
