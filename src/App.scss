@@ -37,6 +37,8 @@
   }
 }
 
+// modals
+
 .modal-overlay{
 	z-index: 2;
     background-color: rgba(0, 0, 0, .6);
@@ -47,3 +49,21 @@
 .course-course-modal {
   height: 10%;
 }
+
+// END :: modals
+
+// scroll
+
+.scroll-y {
+  overflow: scroll !important;
+  overflow-x: hidden;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+div::-webkit-scrollbar {
+  display: none;
+}
+
+// END :: scroll
