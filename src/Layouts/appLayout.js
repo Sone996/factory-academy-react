@@ -4,6 +4,7 @@ import { AppContext } from '../AppContext';
 import { authService } from "../store/AuthModule/AuthService";
 import { TOKEN_LS_NAME } from '../constants/constants';
 import { personService } from "../store/PersonModule/person.service";
+import logo from '../assets/images/factoryww.png';
 // pages
 import TeacherHome from "../Views/Teacher/TeacherHome";
 import StudentHome from "../Views/Student/StudentHome";
@@ -84,7 +85,7 @@ const AppLayout = () => {
         <div className="flex w-full h-full">
             <div className="flex flex-col h-full bg-gray-500 w-2/12">
                 <div className="flex p-16">
-                    <img src="../assets/images/factoryww.png" alt="logo" className="cursor-pointer" onClick={goHome} />
+                    <img src={logo} alt="logo" className="cursor-pointer" onClick={goHome} />
                 </div>
                 <div className="flex flex-col text-white font-bold text-lg">
                     <span className="my-2 cursor-pointer" onClick={goHome}>Home</span>
