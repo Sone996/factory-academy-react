@@ -17,7 +17,7 @@ import StudentAplications from "../Views/Teacher/StudentAplications";
 
 const AppLayout = () => {
 
-    const { loggedUser, setLoggedUser } = useContext(AppContext);
+    const { loggedUser, setLoggedUser, modal, setModal } = useContext(AppContext);
     const [profileData, setProfileData] = useState({});
     const history = useHistory();
 
@@ -67,6 +67,19 @@ const AppLayout = () => {
             })
     }
 
+    const notRated = (id) => {
+        personService.fetchNotRatedCourses(id).then(res => {
+            if(Object.keys(res.data).length > 0) {
+                setModal({
+                    ...modal,
+                    status: true,
+                    modalName: 'rate-course',
+                    data: res.data
+                })
+            }
+        }).catch()
+    }
+
     useEffect(() => {
         if(localStorage.length === 0) {
             history.push('/login'); 
@@ -74,6 +87,9 @@ const AppLayout = () => {
         authService.fetchActiveAccount()
             .then(res => {
                 setLoggedUser(res.data)
+                if(res.data.role === "student") {
+                    notRated(res.data.id);
+                }
             })
             .catch(err => {
                 console.log(err.response.data.errors)

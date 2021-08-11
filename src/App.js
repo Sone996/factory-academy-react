@@ -7,6 +7,7 @@ import { AppContext } from './AppContext';
 // modals
 import FinishingCourseModal from './Components/Modals/FinishingCourseModal';
 import RequestAcceptModal from './Components/Modals/RequestAcceptModal';
+import RateCourse from './Components/Modals/RateCourse';
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
         return <FinishingCourseModal />;
       case 'requrest-accept-modal':
         return <RequestAcceptModal />;
+        case 'rate-course':
+          return <RateCourse />;
       default:
         break;
     }

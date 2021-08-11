@@ -45,15 +45,15 @@ class PersonRepo {
         return api.post(URL, data.data);
     }
 
-    // fetchNotRatedCourses(data) {
-    //     const URL = `${ROUTES.STUDENT}/${data}${ROUTES.RATE_COURSE}`
-    //     return api.get(URL);
-    // }
+    fetchNotRatedCourses(data) {
+        const URL = `${ROUTES.STUDENT}/${data}${ROUTES.RATE_COURSE}`
+        return api.get(URL);
+    }
 
-    // completeCourse(data) {
-    //     const URL = `${ROUTES.STUDENT}/${data.personId}${ROUTES.RATE_COURSE}`;
-    //     return api.post(URL, data.data);
-    // }
+    completeCourse(data) {
+        const URL = `${ROUTES.STUDENT}/${data.personId}${ROUTES.RATE_COURSE}`;
+        return api.post(URL, data.data);
+    }
 }
 
 export const personRepo = new PersonRepo();
