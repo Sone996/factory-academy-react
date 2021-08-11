@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { courseService } from "../../store/CourseModule/course.service";
+import { notificationMsg } from "../../Services/BaseService";
+import { AppContext } from "../../AppContext";
 
 const formInterface = {
     name: '',
@@ -10,6 +12,7 @@ const formInterface = {
 const NewCourse = () => {
 
     const [form, setForm] = useState(formInterface);
+    const {modal, setModal} = useContext(AppContext);
 
     const nameHandler = event => {
         setForm({
@@ -31,11 +34,23 @@ const NewCourse = () => {
     }
 
     const createCourse = () => {
-        courseService.createCourse(form)
-            .then(() => {
+        courseService.createCourse(form).then(res => {
+            setModal({
+                ...modal,
+                status: true,
+                modalName: 'notification-modal',
+                successMsg: notificationMsg(res, 'COURSE_CREATED_SUCCESS')
+            })
                 setForm(formInterface);
             }
-            ).catch();
+            ).catch(err => {
+                setModal({
+                    ...modal,
+                    status: true,
+                    modalName: 'notification-modal',
+                    errMsg: notificationMsg(err, null)
+                })
+            });
     }
 
     return (

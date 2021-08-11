@@ -24,16 +24,16 @@ const RequestAcceptModal = () => {
 
     const sendData = () => {
         personService.resolveRequest(form).then(res => {
-            cloase();
+            close();
             personService.fetchAplicationRequests();
         }).catch(err => {
             console.log(err.response.data.errors);
-            cloase()
+            close()
         }
         );
     }
 
-    const cloase = () => {
+    const close = () => {
         setModal({
             ...modal,
             status: false,

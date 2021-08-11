@@ -8,6 +8,7 @@ import { AppContext } from './AppContext';
 import FinishingCourseModal from './Components/Modals/FinishingCourseModal';
 import RequestAcceptModal from './Components/Modals/RequestAcceptModal';
 import RateCourse from './Components/Modals/RateCourse';
+import NotificationModal from './Components/Modals/NotificationModal';
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
         return <RequestAcceptModal />;
         case 'rate-course':
           return <RateCourse />;
+          case 'notification-modal':
+            return <NotificationModal />;
       default:
         break;
     }
