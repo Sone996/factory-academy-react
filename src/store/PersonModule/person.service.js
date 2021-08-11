@@ -14,9 +14,9 @@ class PersonService {
         return personRepo.fetchNotCompletedCourses();
     }
 
-    // fetchCompletedCourses(id) {
-    //     return personRepo.fetchCompletedCourses(id);
-    // }
+    fetchCompletedCourses(id) {
+        return personRepo.fetchCompletedCourses(id);
+    }
 
     fetchMyStudents() {
         return personRepo.fetchMyStudents();

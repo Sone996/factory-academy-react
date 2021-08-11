@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { personService } from '../../store/PersonModule/person.service';
 import { useHistory } from "react-router-dom";
+import { AppContext } from '../../AppContext';
+// components
+import StudentProfileComponent from '../../Components/Student/StudentProfileComponent';
+import TeacherProfileComponent from '../../Components/Teacher/TeacherProfileComponent';
 
 
 const Profile = (props) => {
+
+	const { loggedUser } = useContext(AppContext);
 
 	const [userData, setUserData] = useState(props);
 	const history = useHistory();
@@ -30,8 +36,7 @@ const Profile = (props) => {
 			<span>Role: {userData.role}</span>
 		</div>
 		<div className="flex flex-col h-full">
-			{/* <Teacher-profile-component v-if="loggedUser.role === 'teacher'"></Teacher-profile-component>
-			<Student-profile-component v-else></Student-profile-component> */}
+			{loggedUser.role === 'teacher' ? <TeacherProfileComponent /> : <StudentProfileComponent /> }
 		</div>
 	</div>
     );

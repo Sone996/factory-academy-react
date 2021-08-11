@@ -21,10 +21,10 @@ class PersonRepo {
         return api.get(URL);
     }
 
-    // fetchCompletedCourses(id) {
-    //     const URL = `${ROUTES.STUDENTS}/${id}${ROUTES.COMPLETE_COURSE}`;
-    //     return api.get(URL)
-    // }
+    fetchCompletedCourses(id) {
+        const URL = `${ROUTES.STUDENTS}/${id}${ROUTES.COMPLETE_COURSE}`;
+        return api.get(URL)
+    }
 
     fetchMyCourses(id) {
         const URL = `${ROUTES.TEACHER}/${id}${ROUTES.COURSES}`;
